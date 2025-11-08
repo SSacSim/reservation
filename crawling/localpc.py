@@ -18,21 +18,6 @@ from datetime import datetime
 from telegram_util import telegram_utils
 
 
-options = Options()
-options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
-options.add_argument("--disable-blink-features=AutomationControlled")
-options.add_argument("start-maximized")
-options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) ...")
-
-# 로컬PC
-driver = webdriver.Chrome(options=options)
-
-# 가상 UI
-# driver = webdriver.Remote(
-#     command_executor='http://localhost:4444/wd/hub',
-#     options=options
-# )
 
 ## util def
 
@@ -222,7 +207,11 @@ def startReservation(driver , settings):
                     break
         if find_flag == 1:
             print("======= 예매 완료!!!!!!!!!!!!!")
-            telegram_utils.send_message("예매가 완료됐습니다. 결제 진행해주세요.")
+            telegram_utils.send_message(
+                f'''{settings['start']} -> {settings['end']}
+{settings['trainNumber']} 예매가 완료됐습니다.
+결제 진행해주세요.'''
+            )
             break
         if no_seat == 1 :
             driver.refresh()
@@ -250,6 +239,17 @@ def startReservation(driver , settings):
 
 
 def run():
+
+    options = Options()
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-blink-features=AutomationControlled")
+    options.add_argument("start-maximized")
+    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) ...")
+
+    # 로컬PC
+    driver = webdriver.Chrome(options=options)
+
     print("로컬 진행중....")
     ################# run ###################3
     userInfo ,settings = read_info() # user , settings 

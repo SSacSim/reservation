@@ -1,0 +1,9 @@
+loginpage :
+reservationpage :
+trainNumber : "103"
+targetdate : "2025-11-09"
+targettime : '13'
+start : "서울"
+end : "부산"
+
+modelname : Qwen/Qwen2.5-0.5B-Instruct
