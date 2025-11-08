@@ -1,0 +1,8 @@
+loginpage: null
+reservationpage: null
+trainNumber: '017'
+targetdate: '2025-11-29'
+targettime: 8
+start: 서울
+end: 부산
+modelname: Qwen/Qwen2.5-0.5B-Instruct
