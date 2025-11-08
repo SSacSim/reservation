@@ -5,4 +5,4 @@ FROM python
 WORKDIR /app
 
 # 3. requirements 설치
-RUN apt-get update && apt-get install -y git
+RUN sudo apt-get update && apt-get install -y git
